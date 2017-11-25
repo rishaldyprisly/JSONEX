@@ -1,15 +1,16 @@
-#define trigPin 13
-#define echoPin 12
+#define trigPin 25
+#define echoPin 26
 
 
 void setup() {
   Serial.begin (9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+
+
 }
 
 void loop() {
-
   long duration, distance;
   digitalWrite(trigPin, LOW);  
   delayMicroseconds(2); 
@@ -18,7 +19,18 @@ void loop() {
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH);
   distance = (duration/2) / 29.1;
+
+  long count;
+  if (distance < 20)
+  { 
+     count = 1;
+  }
+  else if (distance > 20)
+  {
+     count = 0;
+  }
   
-Serial.println(distance);
+Serial.print("jumlah "); Serial.print(count); Serial.print("  jarak  ");Serial.println(distance);
 delay(500);
+  
 }
