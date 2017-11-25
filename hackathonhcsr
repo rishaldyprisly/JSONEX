@@ -41,7 +41,7 @@ void loop() {
 
   total = a1 + a2;
  
-Serial.print("A1 = "); Serial.print(a1);  Serial.print("  A2 = ");Serial.print(a2);  Serial.print("Total terisi = ");Serial.println(total);
+Serial.print("A1 = "); Serial.print(a1);  Serial.print("  A2 = ");Serial.print(a2);  Serial.print("   Total terisi = ");Serial.println(total);
 delay(1000);
   
 }
