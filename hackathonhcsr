@@ -1,7 +1,6 @@
 #define trigPin 25
 #define echoPin 26
-
-
+int result = 0;
 void setup() {
   Serial.begin (9600);
   pinMode(trigPin, OUTPUT);
@@ -10,8 +9,11 @@ void setup() {
 
 }
 
+/*void total() {
+  result = a0 + a1;
+}*/
 void loop() {
-  long duration, distance;
+  long duration, distance, a1, a2, total;
   digitalWrite(trigPin, LOW);  
   delayMicroseconds(2); 
   digitalWrite(trigPin, HIGH);
@@ -20,17 +22,26 @@ void loop() {
   duration = pulseIn(echoPin, HIGH);
   distance = (duration/2) / 29.1;
 
-  long count;
   if (distance < 20)
   { 
-     count = 1;
+    a1 = 1;
   }
-  else if (distance > 20)
+  if (distance > 20)
   {
-     count = 0;
+    a1 = 0;
   }
-  
-Serial.print("jumlah "); Serial.print(count); Serial.print("  jarak  ");Serial.println(distance);
-delay(500);
+
+  if (distance < 20){
+    a2 = 1;
+  } 
+
+  if (distance > 20){
+    a2 = 0;
+  }
+
+  total = a1 + a2;
+ 
+Serial.print("A1 = "); Serial.print(a1);  Serial.print("A2 = ");Serial.print(a2);  Serial.print("Total terisi = ");Serial.println(total);
+delay(1000);
   
 }
